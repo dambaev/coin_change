@@ -88,9 +88,9 @@ test3: $(ATS_OBJS)
 	$(ATSCC) $(ATSCCFLAGS) -o $@ $(ATS_OBJS) TEST/$@.dats $(ATSLIBS)
 
 bench: tests
-	for I in $(shell seq 0 4); do \
-		for T in $(TESTS); do \
-			time ./$$T; \
+	for T in $(TESTS); do \
+		time for I in $(shell seq 1 100 ); do \
+			./$$T > /dev/null; \
 		done; \
 	done
 #
