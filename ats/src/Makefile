@@ -72,9 +72,11 @@ clean:: ; find -name '*_?ats.c' -exec $(RMF) {} \;
 cleanall:: clean
 
 TESTS= \
-	test1 \
+  test5 \
+	test4 \
+	test3 \
 	test2 \
-	test3
+	test1
 
 tests: $(TESTS)
 
@@ -85,6 +87,12 @@ test2: $(ATS_OBJS)
 	$(ATSCC) $(ATSCCFLAGS) -o $@ $(ATS_OBJS) TEST/$@.dats $(ATSLIBS)
 
 test3: $(ATS_OBJS)
+	$(ATSCC) $(ATSCCFLAGS) -o $@ $(ATS_OBJS) TEST/$@.dats $(ATSLIBS)
+
+test4: $(ATS_OBJS)
+	$(ATSCC) $(ATSCCFLAGS) -o $@ $(ATS_OBJS) TEST/$@.dats $(ATSLIBS)
+
+test5: $(ATS_OBJS)
 	$(ATSCC) $(ATSCCFLAGS) -o $@ $(ATS_OBJS) TEST/$@.dats $(ATSLIBS)
 
 bench: tests

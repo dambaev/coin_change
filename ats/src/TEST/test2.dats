@@ -15,8 +15,13 @@ let
     , coins: &(@[int][4]) >> _
     ): int = 
     if sum > 0 then
-      (if n >= 0 then aux (sum, n - 1, coins) + aux (sum - array_get_at(coins, n), n, coins) else 0)
-    else (if sum < 0 then 0 else 1)
+      if n >= 0
+      then aux (sum, n - 1, coins) + aux (sum - coins[n], n, coins)
+      else 0
+    else
+      if sum < 0
+      then 0
+      else 1
 in
   aux (sum, 3, coins)
 end
